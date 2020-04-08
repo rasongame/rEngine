@@ -6,5 +6,4 @@ class Rectangle {
 		int x, y, w, h;
 		SDL_Rect rect;
 
-	private:
 };

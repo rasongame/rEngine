@@ -5,6 +5,7 @@ extern "C" {
 }
 #include <iostream>
 #include "../Logger/Logger.hpp"
+#include "../Render/Rectangle.hpp"
 
 struct Mouse {
 	int x = 0 , y = 0;
@@ -20,12 +21,12 @@ public:
 	std::string title;
 	int width = 640;
 	int height = 480;
-
 	~Game();
 private:
+	SDL_Texture *textures[4];
 	SDL_Window *window;
-	SDL_Renderer *renderer;
 	SDL_Surface *surface;
+	SDL_Renderer *renderer;
 	Mouse mouse{0,0};
 };
 

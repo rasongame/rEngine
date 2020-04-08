@@ -1,6 +1,5 @@
 ﻿#include <iostream>
 #include "Engine/Core/game.hpp"
-
 using namespace std;
 
 int main()
