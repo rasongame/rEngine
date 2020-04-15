@@ -11,7 +11,7 @@ Game::Game()
 	}
 
 	logger.printInfo("Creating renderer and window");
-	window = SDL_CreateWindow(title.c_str(), 0,0, width, height, SDL_WINDOW_SHOWN);
+	window = SDL_CreateWindow(title.c_str(), SDL_WINDOWPOS_UNDEFINED,SDL_WINDOWPOS_UNDEFINED, width, height, SDL_WINDOW_SHOWN);
 	if (window == nullptr) {
 		logger.printError("Window is NULL pointer");
 	}
@@ -21,12 +21,19 @@ Game::Game()
 	}
 	logger.printInfo("Starting listing resources directory");
 	int i = 0;
-	for (const auto & entry : fs::directory_iterator("Resources/Textures")) {
-		logger.printInfo(entry.path());
-		textures[i] = IMG_LoadTexture(renderer, entry.path().c_str());
-		i++;
+	std::string path;
+    path = "Resources/Textures";
+    for (const auto & entry : fs::directory_iterator(path)) {
+#ifdef __linux__
+        logger.printInfo(std::to_string(entry.path().c_str()));
+        textures[i] = IMG_LoadTexture(renderer, entry.path().c_str());
+#else
+        logger.printInfo(entry.path().string());
+        textures[i] = IMG_LoadTexture(renderer, entry.path().string().c_str());
+#endif
+        i++;
 
-	}
+    }
 	surface = SDL_GetWindowSurface(window);
 
 }
