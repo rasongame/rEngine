@@ -8,7 +8,7 @@ int WinMain()
 #endif
 {
     Game game;
-    game.title = "rEngine";
+    game.changeTitle("rEngine");
     while(1) {
         game.update();
         game.render();
