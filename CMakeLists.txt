@@ -15,12 +15,12 @@ foreach (_variableName ${_variableNames})
 endforeach()
 
 add_executable(SDL_game main.cpp
+    Engine/Render/RenderUtils.hpp
     Engine/Core/game.cpp
     Engine/Logger/Logger.cpp
     Engine/Render/Rectangle.cpp
     Engine/Render/Triangle.cpp
     Engine/Core/utils.cpp
-    Engine/Render/RenderUtils.hpp
     Engine/Render/pseudo3dcube.cpp
-    Engine/Render/pseudo3dtriangle.cpp)
+    Engine/Render/pseudo3dtriangle.cpp Engine/Render/RenderUtils.cpp)
 target_link_libraries(SDL_game SDL2 SDL2_image)

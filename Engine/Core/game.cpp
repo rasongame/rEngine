@@ -1,10 +1,9 @@
-﻿#include "game.hpp"
+﻿//#include "game.cpp"
+#include "game.hpp"
 #include <SDL2/SDL_image.h>
 #include <random>
 #include <filesystem>
-#include "../Render/RenderUtils.hpp"
-#include <vector>
-#include <SDL2/SDL_thread.h>
+
 namespace fs = std::filesystem;
 Game::Game()
 {
@@ -53,36 +52,26 @@ void moveTrianSlowly(SDL_Renderer *renderer) {
     pseudo3dtriangle trian(renderer, verticesx[0], verticesx[1], verticesx[2],
                                      verticesy[0], verticesy[1],  verticesy[2]);
 }
+//	Rectangle rect_helmet(renderer, width-128, height/4, 128,64);
+	//
+	//  ебучая треугольная хуйня
 
+//	std::vector<std::vector<int>> vertices = getVerticesForPosition(128, 128, 32, 32);
+//	std::vector<std::vector<int>> vertices1 = getVerticesForPosition(256, 128, 32, 32);
+//	std::vector<std::vector<int>> vertices2 = getVerticesForPosition(256-64, 256, 32, 32);
+//	Triangle (renderer, vertices[0],vertices[1], vertices[2]);
+//	Triangle (renderer, vertices1[0],vertices1[1], vertices1[2]);
+//	Triangle (renderer, vertices2[0],vertices2[1], vertices2[2]);
+
+
+
+//	for (int i = 0; i < 10; ++i) {
+//		Pseudo3dCube cube(renderer, 25+(i<<6), 64, 30, 30, 15);
+//	}
 void Game::render() {
-    using namespace RenderUtils;
-
-	SDL_RenderClear(renderer);
-
-//	logger.printInfo(std::to_string(mouse.x));
-//	logger.printInfo(std::to_string(mouse.y));
-	Rectangle rect(renderer, mouse.x-32, mouse.y-32, 64, 64);
-    Rectangle rect_helmet(renderer, width-128, height/4, 128,64);
-    //
-    //  ебучая треугольная хуйня
-
-    std::vector<std::vector<int>> vertices = getVerticesForPosition(128, 128, 32, 32);
-    std::vector<std::vector<int>> vertices1 = getVerticesForPosition(256, 128, 32, 32);
-    std::vector<std::vector<int>> vertices2 = getVerticesForPosition(256-64, 256, 32, 32);
-    Triangle (renderer, vertices[0],vertices[1], vertices[2]);
-    Triangle (renderer, vertices1[0],vertices1[1], vertices1[2]);
-    Triangle (renderer, vertices2[0],vertices2[1], vertices2[2]);
-
-    //
-    //
-    for (int i = 0; i < 10; ++i) {
-        Pseudo3dCube cube(renderer, 25+(i<<6), 64, 30, 30, 15);
-    }
-    // Создание псевдо 3д треугольника;
-    SDL_RenderCopy(renderer, textures[0], NULL, &rect_helmet.rect);
-    SDL_RenderPresent(renderer);
-    moveTrianSlowly(renderer);
-    SDL_RenderCopy(renderer, textures[0], NULL, &rect_helmet.rect);
+	mouse_rect->x = mouse.x-25;
+	mouse_rect->y = mouse.y-25;
+//    SDL_RenderCopy(renderer, textures[0], NULL, &rect_helmet.rect);
 	SDL_RenderPresent(renderer);
 	//	SDL_UpdateWindowSurface(window);
 }
