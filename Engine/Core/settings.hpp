@@ -1,0 +1,12 @@
+//
+// Created by Rason on 06.07.2020.
+//
+
+#ifndef SDL_GAME_SETTINGS_HPP
+#define SDL_GAME_SETTINGS_HPP
+#define WIDTH 800
+#define HEIGHT 600
+#define TEXTURE_COUNT 1
+//#define LOGGER_SHOW_DATE
+//#define LOGGER_SHOW_WALK_DIRECTION
+#endif //SDL_GAME_SETTINGS_HPP

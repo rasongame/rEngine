@@ -7,25 +7,26 @@
 namespace fs = std::filesystem;
 Game::Game()
 {
+
 	SDL_ShowCursor(SDL_DISABLE);
 	if(SDL_Init(SDL_INIT_EVERYTHING) != 0) {
 	}
 
-	logger.printInfo("Creating renderer and window");
+    Logger::printInfo("Creating renderer and window");
     window = SDL_CreateWindow("", SDL_WINDOWPOS_UNDEFINED,SDL_WINDOWPOS_UNDEFINED, width, height, SDL_WINDOW_SHOWN);
 	if (window == nullptr) {
-		logger.printError("Window is NULL pointer");
+        Logger::printError("Window is NULL pointer");
 	}
 	renderer = SDL_CreateRenderer(window, -1, SDL_RENDERER_ACCELERATED);
 	if(renderer == nullptr) {
-		logger.printError("Renderer is NULL pointer");
-	}
-	logger.printInfo("Starting listing resources directory");
+        Logger::printError("Renderer is NULL pointer");
+    }
+    Logger::printInfo("Starting listing resources directory");
 	int i = 0;
 	std::string path;
     path = "Resources/Textures";
     for (const auto & entry : fs::directory_iterator(path)) {
-        logger.printInfo(entry.path().string());
+        Logger::printInfo(entry.path().string());
         textures[i] = IMG_LoadTexture(renderer, entry.path().string().c_str());
 
         i++;

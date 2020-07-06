@@ -1,5 +1,8 @@
 ﻿#include <iostream>
 #include "Engine/Core/game.hpp"
+
+void ifRectOutOfScreen(Rectangle *pRectangle, Game *pGame);
+
 #ifdef __linux__
 void ifRectOutOfScreen(Rectangle *rect, Game *game) {
 	if (rect->x+rect->w < 0){
@@ -30,9 +33,10 @@ int WinMain()
 		game->player->Render(game->player->x, game->player->y);
 //		Logger().printInfo(std::to_string(game->player.x));
 //		Logger().printInfo(std::to_string(game->player.y));
-		ifRectOutOfScreen(game->player, game);
+//		ifRectOutOfScreen(game->player, game);
 		game->render();
         SDL_Delay(10);
     }
     return -1;
 }
+

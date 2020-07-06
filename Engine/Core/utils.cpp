@@ -1,32 +1,35 @@
 ﻿
 #include "game.hpp"
+
 #include <SDL2/SDL_image.h>
 #include <random>
 #include <filesystem>
 
 void handleScroll(SDL_Event event) {
+#ifdef LOGGER_SHOW_WALK_DIRECTION
     if (event.wheel.y > 0) {
-        Logger().printInfo(std::to_string(event.wheel.y));
+        Logger::printInfo(std::to_string(event.wheel.y));
     } else if (event.wheel.y < 0) {
-        Logger().printInfo(std::to_string(event.wheel.y));
+        Logger::printInfo(std::to_string(event.wheel.y));
     }
+#endif
 }
 void Game::handleKeyboard(SDL_Event event){
 	switch (event.key.keysym.sym) {
 		case SDLK_LEFT:
-			Logger().printInfo("left");
+            Logger::printInfo("left");
 			this->player->x -= this->player_speed;
 		break;
 		case SDLK_RIGHT:
-			Logger().printInfo("right");
+            Logger::printInfo("right");
 			this->player->x += this->player_speed;
 			break;
 		case SDLK_UP:
-			Logger().printInfo("up");
+            Logger::printInfo("up");
 			this->player->y += this->player_speed;
 			break;
 		case SDLK_DOWN:
-			Logger().printInfo("down");
+            Logger::printInfo("down");
 			this->player->y -= this->player_speed;
 			break;
 
@@ -54,4 +57,5 @@ Game::~Game() {
     exit(0);
     return;
 }
+
 

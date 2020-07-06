@@ -2,12 +2,12 @@
 #include <ctime>
 #include <iomanip>
 #include <string>
-class Logger
-{
-public:
-	Logger() {};
-	void printInfo(std::string msg);
-	void printError(std::string msg);
-	void printWarning(std::string msg);
-	~Logger() {};
-};
+
+#pragma once
+namespace Logger {
+    void printInfo(std::string msg);
+
+    void printError(std::string msg);
+
+    void printWarning(std::string msg);
+}
