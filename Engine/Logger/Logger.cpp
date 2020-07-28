@@ -1,5 +1,4 @@
-﻿#include "Logger.hpp"
-#include "../Core/settings.hpp"
+﻿#include <Common/common.hpp>
 
 using namespace Logger;
 

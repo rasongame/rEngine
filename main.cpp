@@ -1,28 +1,33 @@
 ﻿#include <iostream>
+#include <Core/debug.hpp>
+#include <ScriptSystem/LuaInterface.hpp>
 #include "Engine/Core/game.hpp"
-
-void ifRectOutOfScreen(Rectangle *pRectangle, Game *pGame);
+void ifRectOutOfScreen(Rectangle *rect, Game *game) {
+    if (rect->x + rect->w < 0) {
+        rect->x = game->width - 25;
+    } else if (rect->x + rect->w > game->width) {
+        rect->x = 0 - 25;
+    }
+    if (rect->y + rect->h > game->height) {
+        rect->y = 0 + rect->h / 2;
+    } else if (rect->y + rect->h < 0 - 50) {
+        rect->y = game->height - 5;
+    }
+}
 
 #ifdef __linux__
-void ifRectOutOfScreen(Rectangle *rect, Game *game) {
-	if (rect->x+rect->w < 0){
-		rect->x = game->width-25;
-	} else if(rect->x+rect->w > game->width) {
-		rect->x = 0-25;
-	}
-	if (rect->y+rect->h > game->height) {
-		rect->y = 0+rect->h/2;
-	} else if(rect->y+rect->h < 0-50) {
-		rect->y = game->height-5;
-	}
-}
+
 int main()
 #else
 int WinMain()
 #endif
 
 {
-	Game *game = new Game;
+    Game *game = new Game();
+    new LuaInterface(game);
+#ifdef SDL_GAME_DEBUG
+    printDebugInfo();
+#endif
 	game->changeTitle("rEngine");
 	game->mouse_rect = new Rectangle(game->renderer, game->mouse.x-25, game->mouse.y-25, 50, 50);
 	game->player = new Rectangle(game->renderer, game->height-175, 100, 25, 25);

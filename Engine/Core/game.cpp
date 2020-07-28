@@ -1,7 +1,5 @@
 ﻿//#include "game.cpp"
 #include "game.hpp"
-#include <SDL2/SDL_image.h>
-#include <random>
 #include <filesystem>
 
 namespace fs = std::filesystem;
@@ -42,17 +40,6 @@ SDL использует систему координат считая от 0, 
 и вторую позицию, также по координатам окна вроде 640, 480
 X1, Y1, X2, X2
 */
-std::random_device rd;
-std::mt19937 mersenne(rd()); // инициализируем Вихрь Мерсенна случайным стартовым числом
-std::default_random_engine generator;
-std::uniform_int_distribution<int> distribution(1,45);
-void moveTrianSlowly(SDL_Renderer *renderer) {
-    int dice_roll = distribution(generator);
-    std::vector<std::vector<int>> verticesx = RenderUtils::getVerticesForPosition(368+dice_roll,368+dice_roll, 32, 32);
-    std::vector<std::vector<int>> verticesy = RenderUtils::getVerticesForPosition(368-50+dice_roll,468+dice_roll, 32, 32);
-    pseudo3dtriangle trian(renderer, verticesx[0], verticesx[1], verticesx[2],
-                                     verticesy[0], verticesy[1],  verticesy[2]);
-}
 //	Rectangle rect_helmet(renderer, width-128, height/4, 128,64);
 	//
 	//  ебучая треугольная хуйня

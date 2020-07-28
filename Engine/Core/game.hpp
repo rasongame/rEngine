@@ -1,13 +1,7 @@
 ﻿#ifndef GAME_HPP
 #define GAME_HPP
-#include <SDL2/SDL.h>
-#include <iostream>
-#include "../Logger/Logger.hpp"
-#include "../Render/Triangle.hpp"
-#include "../Render/pseudo3dcube.hpp"
-#include "../Render/pseudo3dtriangle.hpp"
-#include "../Render/RenderUtils.hpp"
-#include "settings.hpp"
+
+#include <Common/common.hpp>
 struct Pos {
 	int x = 0 , y = 0;
 };
@@ -30,7 +24,6 @@ public:
 	Pos mouse{0,0};
 	Pos player_pos{0,0};
 	Rectangle *mouse_rect;
-
     ~Game();
 	void handleKeyboard(SDL_Event event);
 private:
