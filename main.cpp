@@ -2,6 +2,7 @@
 #include <Core/debug.hpp>
 #include <ScriptSystem/LuaInterface.hpp>
 #include "Engine/Core/game.hpp"
+#include <Common/Enums.hpp>
 void ifRectOutOfScreen(Rectangle *rect, Game *game) {
     if (rect->x + rect->w < 0) {
         rect->x = game->width - 25;
@@ -24,6 +25,7 @@ int WinMain()
 
 {
     Game *game = new Game();
+    Game::m_instance = game;
     new LuaInterface(game);
 #ifdef SDL_GAME_DEBUG
     printDebugInfo();
@@ -42,6 +44,6 @@ int WinMain()
 		game->render();
         SDL_Delay(10);
     }
-    return -1;
+    return error_codes::SUCCESS;
 }
 

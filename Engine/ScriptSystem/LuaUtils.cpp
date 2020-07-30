@@ -7,7 +7,6 @@
 using namespace LuaUtils;
 
 int LuaUtils::getTitle(lua_State *l) {
-    lua_pushstring(l, "Pisun, pisun");
-//    lua_pushstring(l, LuaInterface::game->title.c_str());
+    lua_pushstring(l, Game::getInstance()->title.c_str());
     return 1;
 }

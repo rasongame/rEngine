@@ -11,7 +11,6 @@ extern "C" {
 #include <luajit-2.0/lualib.h>
 
 };
-
 #include <SDL2/SDL.h>
 #include <SDL2/SDL_image.h>
 #include <iostream>

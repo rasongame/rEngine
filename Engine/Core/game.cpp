@@ -1,7 +1,8 @@
 ﻿//#include "game.cpp"
 #include "game.hpp"
 #include <filesystem>
-
+#include <Common/Enums.hpp>
+Game* Game::m_instance = nullptr;
 namespace fs = std::filesystem;
 Game::Game()
 {
@@ -23,12 +24,19 @@ Game::Game()
 	int i = 0;
 	std::string path;
     path = "Resources/Textures";
-    for (const auto & entry : fs::directory_iterator(path)) {
-        Logger::printInfo(entry.path().string());
-        textures[i] = IMG_LoadTexture(renderer, entry.path().string().c_str());
+    try {
+        for (const auto & entry : fs::directory_iterator(path)) {
+            Logger::printInfo(entry.path().string());
+            textures[i] = IMG_LoadTexture(renderer, entry.path().string().c_str());
 
-        i++;
+            i++;
 
+        }
+    }
+    catch(const fs::filesystem_error e) {
+        Logger::printError("СЛУЧИЛСЯ АПОКАЛИПТИЧСКИЙ ПИЗДЕЦ!");
+        Logger::printError(e.what());
+        exit(error_codes::RESOURCES_NOT_FOUND);
     }
 	surface = SDL_GetWindowSurface(window);
 
@@ -62,4 +70,11 @@ void Game::render() {
 //    SDL_RenderCopy(renderer, textures[0], NULL, &rect_helmet.rect);
 	SDL_RenderPresent(renderer);
 	//	SDL_UpdateWindowSurface(window);
+}
+
+Game* Game::getInstance() {
+    if(m_instance) {
+       return m_instance;
+    }
+    return nullptr;
 }

@@ -10,6 +10,8 @@ class Game
 {
 public:
 	Game();
+	static Game *getInstance();
+    static Game* m_instance;
     void changeTitle(std::string title) {
         SDL_SetWindowTitle(window,title.c_str());
     };

@@ -9,3 +9,5 @@
 print("1")
 local os = require("os")
 print(os.date("%d.%m.%Y"))
+print(getTitle())
+print(setWidth())

@@ -54,7 +54,6 @@ void Game::update() {
 Game::~Game() {
     SDL_DestroyWindow(window);
     SDL_Quit();
-    exit(0);
     return;
 }
 

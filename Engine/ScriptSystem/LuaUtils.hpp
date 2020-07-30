@@ -13,5 +13,6 @@ extern "C" {
 };
 namespace LuaUtils {
     int getTitle(lua_State *l);
+    int setTitle(lua_State *l);
 }
 #endif //SDL_GAME_LUAUTILS_HPP
