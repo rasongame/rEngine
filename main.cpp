@@ -1,4 +1,4 @@
-﻿#include <iostream>
+﻿    #include <iostream>
 #include <Core/debug.hpp>
 #include <ScriptSystem/LuaInterface.hpp>
 #include "Engine/Core/game.hpp"
@@ -15,14 +15,11 @@ void ifRectOutOfScreen(Rectangle *rect, Game *game) {
         rect->y = game->height - 5;
     }
 }
-
 #ifdef __linux__
-
 int main()
 #else
 int WinMain()
 #endif
-
 {
     Game *game = new Game();
     Game::m_instance = game;

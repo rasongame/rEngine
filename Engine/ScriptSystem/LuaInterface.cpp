@@ -1,7 +1,7 @@
 //
 // Created by User on 28.07.2020.
 //
-
+#pragma comment(lib, "lua5.1.lib")
 
 #include <filesystem>
 #include "LuaInterface.hpp"

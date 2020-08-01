@@ -5,7 +5,7 @@
 #ifndef SDL_GAME_LUAINTERFACE_HPP
 #define SDL_GAME_LUAINTERFACE_HPP
 #pragma once
-
+#pragma comment(lib, "lua5.1.lib")
 #include <Core/game.hpp>
 
 class LuaInterface {
